@@ -1,10 +1,10 @@
 # Ruby on Rails app
 
-![Screenshot of my project](app/assets/images/screenshot.png "Project Screenshot")
+![Screenshot of my project](app/assets/images/auction_app_screenshot.png "Project Screenshot")
 
 This application has been tested with the following:
 
-1. Ruby 3.1.2
+1. Ruby 3.3.0
 2. Rails 7.1.3
 
 It is highly recommended that you use the above versions
