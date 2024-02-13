@@ -14,7 +14,7 @@ It is highly recommended that you use the above versions
 Firstly clone the repository:
 
 ```sh
-git clone https://github.com/chitramdasgupta/Test-Rails-App.git
+git clone https://github.com/chitramdasgupta/Rails-Auction-App.git
 ```
 
 Then `cd` into the directory:
