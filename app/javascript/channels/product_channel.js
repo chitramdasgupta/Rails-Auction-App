@@ -45,11 +45,24 @@ function addNewBid(productId, data) {
 }
 
 function handleBidSelected(data) {
-  const bidsElement = document.getElementById("bids");
-  if (bidsElement) {
-    bidsElement.innerHTML = `<p>Sold off to <strong>${data.email}</strong> for <strong>$${data.price}</strong></p>`;
-    const bidForm = document.getElementById("bid-form");
-    if (bidForm) bidForm.style.display = "none";
+  const productSection = document.getElementById("products-section");
+  const bidsContainer = document.getElementById("bids");
+  const bidForm = document.getElementById("bid-form");
+
+  let soldOffContainer = document.getElementById("sold-off");
+  if (!soldOffContainer) {
+    soldOffContainer = document.createElement("div");
+    soldOffContainer.setAttribute("id", "sold-off");
+    productSection.insertBefore(soldOffContainer, bidsContainer);
+  }
+
+  soldOffContainer.innerHTML = `<p>Sold off to <strong>${data.email}</strong> for <strong>$${data.price}</strong></p><hr>`;
+
+  if (bidsContainer) {
+    bidsContainer.style.display = "none";
+  }
+  if (bidForm) {
+    bidForm.style.display = "none";
   }
 }
 

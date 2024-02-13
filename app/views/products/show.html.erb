@@ -6,9 +6,8 @@
     <p>Sold off to <strong><%= @product.selected_bid.user.email %></strong> for <strong>$<%= @product.selected_bid.price %></strong></p>
     <hr>
   <% else %>
-    <h3>Bids</h3>
     <% if current_user.user_type == 'buyer' %>
-      <%= form_with(model: [ @product, @product.bids.build ], local: true) do |form| %>
+      <%= form_with(model: [ @product, @product.bids.build ], local: true, id: "bid-form") do |form| %>
         <div class="form-field">
           <%= form.label :price %>
           <%= form.number_field :price, step: 0.01, required: true %>
@@ -19,6 +18,7 @@
       <% end %>
     <% end %>
     <div id="bids">
+      <h3>Bids</h3>
       <% @product.bids.each do |bid| %>
         <% if bid.persisted? %>
           <p>
