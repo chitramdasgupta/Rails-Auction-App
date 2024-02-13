@@ -4,7 +4,8 @@ class BidsController < ApplicationController
     @bid = @product.bids.build(bid_params)
     @bid.user = current_user
     if @bid.save
-      redirect_to @product, notice: 'Bid was successfully placed.'
+      ProductChannel.broadcast_to(@product, { action: 'new_bid', bid: @bid, email: @bid.user.email })
+      head :ok
     else
       redirect_to @product, alert: 'Error placing bid.'
     end

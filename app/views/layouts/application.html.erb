@@ -8,7 +8,7 @@
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
-  <body>
+  <body data-current-user-id="<%= current_user&.id %>" data-current-user-type="<%= current_user&.user_type %>">
     <nav>
       <%= link_to "Home", root_path %>
       <% if logged_in? %>

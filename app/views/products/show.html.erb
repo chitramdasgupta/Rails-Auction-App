@@ -1,29 +1,33 @@
-<h1><%= @product.name %></h1>
-<p><%= @product.description %></p>
-<% if @product.selected_bid %>
-  <p><strong>Sold off to <%= @product.selected_bid.user.email %> for $<%= @product.selected_bid.price %></strong></p>
-<% else %>
-  <hr>
-  <h3>Bids</h3>
-  <% if current_user.user_type == 'buyer' %>
-    <%= form_with(model: [ @product, @product.bids.build ], local: true) do |form| %>
-      <div class="form-field">
-        <%= form.label :price %>
-        <%= form.number_field :price, step: 0.01, required: true %>
-      </div>
-      <div class="actions">
-        <%= form.submit "Place Bid" %>
-      </div>
+<section id="products-section" data-product-id="<%= @product&.id %>" data-product-user-id="<%= @product&.user.id %>">
+  <h1><%= @product.name %></h1>
+  <p><%= @product.description %></p>
+  <% if @product.selected_bid %>
+    <p>Sold off to <strong><%= @product.selected_bid.user.email %></strong> for <strong>$<%= @product.selected_bid.price %></strong></p>
+    <hr>
+  <% else %>
+    <h3>Bids</h3>
+    <% if current_user.user_type == 'buyer' %>
+      <%= form_with(model: [ @product, @product.bids.build ], local: true) do |form| %>
+        <div class="form-field">
+          <%= form.label :price %>
+          <%= form.number_field :price, step: 0.01, required: true %>
+        </div>
+        <div class="actions">
+          <%= form.submit "Place Bid" %>
+        </div>
+      <% end %>
     <% end %>
-  <% end %>
-  <% @product.bids.each do |bid| %>
-    <% if bid.persisted? %>
-      <p>
-        <%= bid.user.email %>: $<%= bid.price %>
-        <% if current_user.user_type == 'seller' && @product.user_id == current_user.id %>
-          <%= button_to 'Select', select_bid_product_path(@product, bid_id: bid.id), method: :patch, data: { confirm: "Are you sure you want to select this bid?" } %>
+    <div id="bids">
+      <% @product.bids.each do |bid| %>
+        <% if bid.persisted? %>
+          <p>
+            <%= bid.user.email %>: <strong>$<%= bid.price %></strong>
+            <% if current_user.user_type == 'seller' && @product.user_id == current_user.id %>
+              <%= button_to 'Select', select_bid_product_path(@product, bid_id: bid.id), method: :patch %>
+            <% end %>
+          </p>
         <% end %>
-      </p>
-    <% end %>
+      <% end %>
+    </div>
   <% end %>
-<% end %>
+</section>

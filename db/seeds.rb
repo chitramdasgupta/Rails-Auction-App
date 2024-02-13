@@ -1,10 +1,10 @@
 # Create Buyers
 User.create!(email: 'buyer1@email.com', password: 'password', password_confirmation: 'password',
-                      user_type: 'buyer')
+             user_type: 'buyer')
 User.create!(email: 'buyer2@email.com', password: 'password', password_confirmation: 'password',
-                      user_type: 'buyer')
+             user_type: 'buyer')
 User.create!(email: 'buyer3@email.com', password: 'password', password_confirmation: 'password',
-                      user_type: 'buyer')
+             user_type: 'buyer')
 
 # Create Sellers
 seller1 = User.create!(email: 'seller1@email.com', password: 'password', password_confirmation: 'password',

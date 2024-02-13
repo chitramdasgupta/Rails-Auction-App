@@ -23,11 +23,14 @@ class ProductsController < ApplicationController
     @product = Product.find(params[:id])
     if seller? && @product.user_id == current_user.id
       @product.update(selected_bid_id: params[:bid_id])
-      flash[:notice] = 'Bid selected successfully.'
+      ProductChannel.broadcast_to(@product,
+                                  { action: 'bid_selected', selected_bid_id: @product.selected_bid_id, email: @product.selected_bid.user.email,
+                                    price: @product.selected_bid.price })
+      head :ok
     else
       flash[:alert] = 'You are not authorized to perform this action.'
+      redirect_to @product
     end
-    redirect_to @product
   end
 
   private
