@@ -20,7 +20,7 @@ git clone https://github.com/chitramdasgupta/Rails-Auction-App.git
 Then `cd` into the directory:
 
 ```sh
-cd Test-Rails-App/
+cd Rails-Auction-App/
 ```
 
 Then you need to install the dependencies:
