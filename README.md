@@ -1,5 +1,11 @@
 # Ruby on Rails app
 
+In this real-time auction app, you can log in as a *buyer* or *seller*. Check the
+`db/seeds.rb` file for sample data (including the user email and password). Buyers
+can place bids on products, and the bids will show up in real-time. The seller can
+select a bid from all the submitted bid, and the selection will be updated in
+real-time, as well.
+
 ![Screenshot of my project](app/assets/images/auction_app_screenshot.png "Project Screenshot")
 
 This application has been tested with the following:
