@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Create Buyers
 User.create!(email: 'buyer1@email.com', password: 'password', password_confirmation: 'password',
              user_type: 'buyer')

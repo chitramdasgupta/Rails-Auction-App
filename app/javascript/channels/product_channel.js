@@ -2,7 +2,7 @@ import consumer from "channels/consumer";
 
 document.addEventListener("turbo:load", () => {
   const productElement = document.getElementById("products-section");
-  const productId = productElement.getAttribute("data-product-id");
+  const productId = productElement?.getAttribute("data-product-id");
 
   if (productId) {
     setupProductChannel(productId);

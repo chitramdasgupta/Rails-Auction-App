@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class BidsController < ApplicationController
   def create
     @product = Product.find(params[:product_id])

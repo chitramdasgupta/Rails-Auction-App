@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ProductChannel < ApplicationCable::Channel
   def subscribed
     product = Product.find(params[:product_id])
